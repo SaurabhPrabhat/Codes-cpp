@@ -2,6 +2,7 @@
 #include<vector>
 using namespace std;
 
+// time complexity O(n2^n) , auxiliary space O(1)
 int main(){
     int a[]={3,4,1};
     int n=3;

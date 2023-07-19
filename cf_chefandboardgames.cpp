@@ -18,7 +18,7 @@ void solve(){
    cin>>n;
    int ans=0;
    for(int i=1;i<=n;i++){
-      // adding number of squares of odd length each odd length 'i' between from 1 to n 
+      // adding number of squares of  each odd length 'i'  from 1 to n 
    	if(i&1==1){
    	ans+=(n-i+1)+(n-i+1)*(n-i);}}
    	cout<<ans<<endl;

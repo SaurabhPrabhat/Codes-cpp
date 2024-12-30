@@ -1,0 +1,23 @@
+
+ int cnt=0;
+void merge(int l1,int h1,int l2,int h2,vi &a){
+	int i=l1,j=l2,k=0;
+	vi v(h1+h2-l1-l2+2);
+	while(i<=h1&&j<=h2){
+		if(a[i]<=a[j]){
+			v[k++]=a[i++];
+		}
+		else {v[k++]=a[j++];cnt+=(h1-i+1);}
+	}
+	while(i<=h1)v[k++]=a[i++];
+	while(j<=h2)v[k++]=a[j++];
+    for(int i=0;i<v.size();i++)a[i+l1]=v[i];
+}
+void mergeSort(int low,int high,vi &a){
+	if(low<high){
+		int mid=(low+high)/2;
+		mergeSort(low,mid,a);
+		mergeSort(mid+1,high,a);
+	    merge(low,mid,mid+1,high,a);
+	}
+}

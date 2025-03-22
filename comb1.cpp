@@ -1,3 +1,4 @@
+
 ll power(ll n,ll x){
     ll res=1;
     n%=mod;
@@ -23,4 +24,33 @@ ll comb(ll n,ll r){
     if(r>n||r<0)return 0;
     if(r==n||r==0)return 1;
     return fact[n]*invfact[r]%mod*invfact[n-r]%mod;
+}
+
+
+
+
+vector<vl> mul(vector<vl> &a,vector<vl> &b){
+     int n=a.size();
+    vector<vl>res(n,vl(n));
+    for(int i=0;i<n;i++){
+      for(int j=0;j<n;j++){
+        ll sm=0;
+        for(int k=0;k<n;k++){
+          sm=(sm+a[i][k]*b[k][j]%mod)%mod;
+            }
+        res[i][j]=sm;
+        }
+    }
+    return  res;
+}
+vector<vl> matexp(vector<vl> &a,ll x){
+    int n=a.size();
+    vector<vl>res(n,vl(n));
+    for(int i=0;i<n;i++)res[i][i]=1;
+    while(x){
+        if(x&1)res=mul(res,a);
+        x>>=1;
+        a=mul(a,a);
+    }
+    return res;
 }
